@@ -5,18 +5,19 @@
         <nav class="sidebar-nav">
             <ul id="sidebarnav" class="pt-4">
                 <li class="sidebar-item">
-                    <a class="sidebar-link waves-effect waves-dark sidebar-link" href="index.html"
+                    <a class="sidebar-link waves-effect waves-dark sidebar-link" href="../view_admin/dashboard.php"
                         aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span
                             class="hide-menu">Dashboard</span></a>
                 </li>
                 <li class="sidebar-item">
-                    <a class="sidebar-link waves-effect waves-dark sidebar-link" href="grid.html"
+                    <a class="sidebar-link waves-effect waves-dark sidebar-link" href="../view_alat/alat.php"
                         aria-expanded="false"><i class="mdi mdi-dropbox"></i><span class="hide-menu">Data Alat &
                             Bahan</span></a>
                 </li>
                 <li class="sidebar-item">
-                    <a class="sidebar-link waves-effect waves-dark sidebar-link" href="grid.html"
-                        aria-expanded="false"><i class="mdi mdi-file-document"></i><span class="hide-menu">Data
+                    <a class="sidebar-link waves-effect waves-dark sidebar-link"
+                        href="../view_peminjaman/peminjaman.php" aria-expanded="false"><i
+                            class="mdi mdi-file-document"></i><span class="hide-menu">Data
                             Peminjaman</span></a>
                 </li>
                 <li class="sidebar-item">
@@ -25,12 +26,12 @@
                         </span></a>
                     <ul aria-expanded="false" class="collapse first-level">
                         <li class="sidebar-item">
-                            <a href="form-basic.html" class="sidebar-link"><i
+                            <a href="../view_user/profile.php" class="sidebar-link"><i
                                     class="mdi mdi-account-card-details"></i><span class="hide-menu"> Profile
                                 </span></a>
                         </li>
                         <li class="sidebar-item">
-                            <a href="form-wizard.html" class="sidebar-link"><i
+                            <a href="../view_user/users.php" class="sidebar-link"><i
                                     class="mdi mdi-account-multiple"></i><span class="hide-menu"> Data Pengguna
                                 </span></a>
                         </li>

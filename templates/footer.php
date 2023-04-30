@@ -31,6 +31,13 @@
 <script src="../assets/libs/moment/min/moment.min.js"></script>
 <script src="../assets/libs/fullcalendar/dist/fullcalendar.min.js"></script>
 <script src="../assets/js/pages/calendar/cal-init.js"></script>
+
+<!-- Datatables -->
+<script src="../assets/extra-libs/multicheck/datatable-checkbox-init.js"></script>
+<script src="../assets/extra-libs/DataTables/datatables.min.js"></script>
+<script>
+    $("#zero_config").DataTable();
+</script>
 </body>
 
 </html>

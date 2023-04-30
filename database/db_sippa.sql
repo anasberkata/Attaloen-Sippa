@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Apr 29, 2023 at 10:01 PM
+-- Generation Time: Apr 30, 2023 at 08:10 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 7.4.33
 
@@ -33,6 +33,7 @@ CREATE TABLE `users` (
   `username` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
+  `phone` varchar(40) NOT NULL,
   `image` varchar(255) NOT NULL,
   `role_id` int(10) NOT NULL,
   `date_created` date NOT NULL,
@@ -43,9 +44,10 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id_user`, `nama`, `username`, `email`, `password`, `image`, `role_id`, `date_created`, `is_active`) VALUES
-(1, 'Janjan Hari Sudrajat', 'admin', 'janjanhs@gmail.com', 'admin', 'default.jpg', 1, '2023-04-23', 1),
-(2, 'Eka Anas Jatnika', 'anasberkata', 'ideanasdesain@gmail.com', 'Dean114119', 'default.jpg', 2, '2023-04-23', 1);
+INSERT INTO `users` (`id_user`, `nama`, `username`, `email`, `password`, `phone`, `image`, `role_id`, `date_created`, `is_active`) VALUES
+(1, 'Janjan Hari Sudrajat', 'admin', 'janjanhs@gmail.com', 'admin', '0678564574', 'default.jpg', 1, '2023-04-23', 1),
+(2, 'Eka Anas Jatnika', 'anasberkata', 'ideanasdesain@gmail.com', 'Dean114119', '085156334607', 'default.jpg', 1, '2023-04-23', 1),
+(4, 'Indra Lesmana', 'indra', 'indralesmana@gmail.com', 'indra', '085165245156', 'default.jpg', 2, '2023-04-30', 1);
 
 -- --------------------------------------------------------
 
@@ -64,7 +66,7 @@ CREATE TABLE `users_role` (
 
 INSERT INTO `users_role` (`id_role`, `role`) VALUES
 (1, 'Admin'),
-(2, 'User');
+(2, 'Karyawan');
 
 --
 -- Indexes for dumped tables
@@ -90,7 +92,7 @@ ALTER TABLE `users_role`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `users_role`

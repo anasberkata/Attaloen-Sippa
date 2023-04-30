@@ -32,6 +32,10 @@ ini_set('display_errors', 1); //Atauerror_reporting(E_ALL && ~E_NOTICE);
 
     <link href="../assets/libs/fullcalendar/dist/fullcalendar.min.css" rel="stylesheet" />
     <link href="../assets/extra-libs/calendar/calendar.css" rel="stylesheet" />
+
+    <link href="../assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.css" rel="stylesheet" />
+    <link href="../assets/css/style.min.css" rel="stylesheet" />
+
     <link href="../assets/css/style.min.css" rel="stylesheet" />
 </head>
 
