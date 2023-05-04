@@ -104,7 +104,7 @@ if (isset($_POST["edit_user"])) {
                             <div class="border-top">
                                 <div class="card-body">
                                     <button type="submit" class="btn btn-primary" name="edit_user">
-                                        Tambah
+                                        Ubah
                                     </button>
                                 </div>
                             </div>

@@ -10,8 +10,9 @@
                             class="hide-menu">Dashboard</span></a>
                 </li>
                 <li class="sidebar-item">
-                    <a class="sidebar-link waves-effect waves-dark sidebar-link" href="../view_alat/alat.php"
-                        aria-expanded="false"><i class="mdi mdi-dropbox"></i><span class="hide-menu">Data Alat &
+                    <a class="sidebar-link waves-effect waves-dark sidebar-link"
+                        href="../view_alat_bahan/alat_bahan.php" aria-expanded="false"><i
+                            class="mdi mdi-dropbox"></i><span class="hide-menu">Data Alat &
                             Bahan</span></a>
                 </li>
                 <li class="sidebar-item">
