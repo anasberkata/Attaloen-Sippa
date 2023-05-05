@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Apr 30, 2023 at 08:10 PM
+-- Generation Time: May 05, 2023 at 10:19 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 7.4.33
 
@@ -20,6 +20,91 @@ SET time_zone = "+00:00";
 --
 -- Database: `db_sippa`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `alat_bahan`
+--
+
+CREATE TABLE `alat_bahan` (
+  `id_alat_bahan` int(11) NOT NULL,
+  `kode` varchar(100) NOT NULL,
+  `nama_alat_bahan` varchar(255) NOT NULL,
+  `merk` varchar(255) NOT NULL,
+  `id_kategori` int(11) NOT NULL,
+  `qty` int(11) NOT NULL,
+  `gambar` varchar(255) NOT NULL,
+  `kondisi` varchar(100) NOT NULL,
+  `keterangan` varchar(255) NOT NULL,
+  `date_created` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `alat_bahan`
+--
+
+INSERT INTO `alat_bahan` (`id_alat_bahan`, `kode`, `nama_alat_bahan`, `merk`, `id_kategori`, `qty`, `gambar`, `kondisi`, `keterangan`, `date_created`) VALUES
+(3, '20190201', 'Gunting', 'Joyko SC-848', 1, 50, '64532303319ec.jpg', 'Baik', '', '2023-05-04'),
+(4, '20210102', 'Zipper', '', 2, 50, '64532b5cdc94d.jpg', 'Baik', '', '2023-05-04'),
+(6, '20190201', 'Jarum jahit', 'Regal', 1, 50, '64536b9b3756b.jpg', 'Baik', '', '2023-05-04'),
+(7, '20210102', 'Benang', 'Cotton', 2, 50, '6454aa187bb64.jpg', 'Baik', '', '2023-05-05'),
+(8, '20190201', 'Hakpen', 'Tulip Gold 2/3', 1, 50, '6454aa4239e1b.jpg', 'Baik', '', '2023-05-05');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `kategori`
+--
+
+CREATE TABLE `kategori` (
+  `id_kategori` int(11) NOT NULL,
+  `kategori` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `kategori`
+--
+
+INSERT INTO `kategori` (`id_kategori`, `kategori`) VALUES
+(1, 'Alat'),
+(2, 'Bahan');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `peminjaman`
+--
+
+CREATE TABLE `peminjaman` (
+  `id_peminjaman` int(11) NOT NULL,
+  `id_karyawan` int(11) NOT NULL,
+  `keperluan` text NOT NULL,
+  `tanggal_peminjaman` date NOT NULL,
+  `tanggal_pengembalian` date NOT NULL,
+  `status` int(11) NOT NULL,
+  `tanggal_pengambilan` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `peminjaman`
+--
+
+INSERT INTO `peminjaman` (`id_peminjaman`, `id_karyawan`, `keperluan`, `tanggal_peminjaman`, `tanggal_pengembalian`, `status`, `tanggal_pengambilan`) VALUES
+(1, 2, 'Bikin baju anak', '2023-05-04', '2023-05-08', 1, '2023-05-05');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `peminjaman_detail`
+--
+
+CREATE TABLE `peminjaman_detail` (
+  `id_peminjaman_detail` int(11) NOT NULL,
+  `id_peminjaman` int(11) NOT NULL,
+  `id_barang` int(11) NOT NULL,
+  `qty_peminjaman` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -46,7 +131,7 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id_user`, `nama`, `username`, `email`, `password`, `phone`, `image`, `role_id`, `date_created`, `is_active`) VALUES
 (1, 'Janjan Hari Sudrajat', 'admin', 'janjanhs@gmail.com', 'admin', '0678564574', 'default.jpg', 1, '2023-04-23', 1),
-(2, 'Eka Anas Jatnika', 'anasberkata', 'ideanasdesain@gmail.com', 'Dean114119', '085156334607', 'default.jpg', 1, '2023-04-23', 1),
+(2, 'Eka Anas Jatnika', 'anasberkata', 'ideanasdesain@gmail.com', 'Dean114119', '085156334607', 'default.jpg', 2, '2023-04-23', 1),
 (4, 'Indra Lesmana', 'indra', 'indralesmana@gmail.com', 'indra', '085165245156', 'default.jpg', 2, '2023-04-30', 1);
 
 -- --------------------------------------------------------
@@ -73,6 +158,30 @@ INSERT INTO `users_role` (`id_role`, `role`) VALUES
 --
 
 --
+-- Indexes for table `alat_bahan`
+--
+ALTER TABLE `alat_bahan`
+  ADD PRIMARY KEY (`id_alat_bahan`);
+
+--
+-- Indexes for table `kategori`
+--
+ALTER TABLE `kategori`
+  ADD PRIMARY KEY (`id_kategori`);
+
+--
+-- Indexes for table `peminjaman`
+--
+ALTER TABLE `peminjaman`
+  ADD PRIMARY KEY (`id_peminjaman`);
+
+--
+-- Indexes for table `peminjaman_detail`
+--
+ALTER TABLE `peminjaman_detail`
+  ADD PRIMARY KEY (`id_peminjaman_detail`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -87,6 +196,30 @@ ALTER TABLE `users_role`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `alat_bahan`
+--
+ALTER TABLE `alat_bahan`
+  MODIFY `id_alat_bahan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT for table `kategori`
+--
+ALTER TABLE `kategori`
+  MODIFY `id_kategori` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `peminjaman`
+--
+ALTER TABLE `peminjaman`
+  MODIFY `id_peminjaman` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `peminjaman_detail`
+--
+ALTER TABLE `peminjaman_detail`
+  MODIFY `id_peminjaman_detail` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `users`

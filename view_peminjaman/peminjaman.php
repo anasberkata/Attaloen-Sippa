@@ -4,7 +4,8 @@ include "../templates/header.php";
 
 $peminjaman = query(
     "SELECT * FROM peminjaman
-    INNER JOIN users ON peminjaman.id_karyawan = users.id_user"
+    INNER JOIN users ON peminjaman.id_karyawan = users.id_user
+    ORDER BY id_peminjaman DESC"
 );
 ?>
 
@@ -34,8 +35,8 @@ $peminjaman = query(
                                         <th>Nama</th>
                                         <th>Keperluan</th>
                                         <th>Tanggal Peminjaman</th>
-                                        <th>Tanggal Pengembalian</th>
                                         <th>Tanggal Pengambilan</th>
+                                        <th>Tanggal Pengembalian</th>
                                         <th>Status</th>
                                         <th>Aksi</th>
                                     </tr>
@@ -54,22 +55,35 @@ $peminjaman = query(
                                                 <?= $p["keperluan"]; ?>
                                             </td>
                                             <td>
-                                                <?= $p["tanggal_peminjaman"]; ?>
+                                                <?= date('d F Y', strtotime($p["tanggal_peminjaman"])); ?>
                                             </td>
                                             <td>
-                                                <?= $p["tanggal_pengembalian"]; ?>
+                                                <?= date('d F Y', strtotime($p["tanggal_pengambilan"])); ?>
                                             </td>
                                             <td>
-                                                <?= $p["tanggal_pengambilan"]; ?>
+                                                <?= date('d F Y', strtotime($p["tanggal_pengembalian"])); ?>
                                             </td>
                                             <td>
-                                                <?= $p["status"]; ?>
+                                                <?php if ($p["status"] == 1): ?>
+                                                    <a href="peminjaman_status.php?id_peminjaman=<?= $p["id_peminjaman"] ?>">
+                                                        <span class="btn btn-success text-white">Diterima</span>
+                                                    </a>
+                                                <?php elseif ($p["status"] == 2): ?>
+                                                    <a href="peminjaman_status.php?id_peminjaman=<?= $p["id_peminjaman"] ?>">
+                                                        <span class="btn btn-warning">Pending</span>
+                                                    </a>
+                                                <?php else: ?>
+                                                    <a href="peminjaman_status.php?id_peminjaman=<?= $p["id_peminjaman"] ?>">
+                                                        <span class="btn btn-danger">Ditolak</span>
+                                                    </a>
+                                                <?php endif; ?>
                                             </td>
                                             <td>
                                                 <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                                                    <a href="peminjaman_detail.php?id_peminjaman=<?= $p["id_peminjaman"] ?>"
+                                                        class="btn btn-success text-white"><i class="mdi mdi-login"></i></a>
                                                     <a href="peminjaman_edit.php?id_peminjaman=<?= $p["id_peminjaman"] ?>"
-                                                        class="btn btn-info text-white"><i
-                                                            class="mdi mdi-account-edit"></i></a>
+                                                        class="btn btn-info text-white"><i class="mdi mdi-pencil"></i></a>
                                                     <a href="peminjaman_delete.php?id_peminjaman=<?= $p["id_peminjaman"] ?>"
                                                         class="btn btn-danger text-white"
                                                         onclick="return confirm('Yakin ingin menghapus <?= $p['nama']; ?>?');"><i

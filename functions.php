@@ -250,3 +250,93 @@ function upload_gambar_alat_bahan()
 
     return $namaFileBaru;
 }
+
+
+// -----------------------------------------------------------------------------------------------------
+// USERS
+function peminjaman_add($data)
+{
+    global $conn;
+
+    $id_karyawan = $data["id_karyawan"];
+    $keperluan = $data["keperluan"];
+    $tanggal_peminjaman = $data["tanggal_peminjaman"];
+    $tanggal_pengembalian = $data["tanggal_pengembalian"];
+    $tanggal_pengambilan = $data["tanggal_pengambilan"];
+    $status = "2";
+
+    $query = "INSERT INTO peminjaman
+				VALUES
+			(NULL, '$id_karyawan', '$keperluan', '$tanggal_peminjaman', '$tanggal_pengembalian', '$status', '$tanggal_pengambilan')
+			";
+
+    mysqli_query($conn, $query);
+
+    return mysqli_affected_rows($conn);
+}
+
+function peminjaman_edit($data)
+{
+    global $conn;
+
+    $id_peminjaman = $data["id_peminjaman"];
+    $id_karyawan = $data["id_karyawan"];
+    $keperluan = $data["keperluan"];
+    $tanggal_peminjaman = $data["tanggal_peminjaman"];
+    $tanggal_pengembalian = $data["tanggal_pengembalian"];
+    $tanggal_pengambilan = $data["tanggal_pengambilan"];
+
+    $query = "UPDATE peminjaman SET
+			id_karyawan = '$id_karyawan',
+			keperluan = '$keperluan',
+			tanggal_peminjaman = '$tanggal_peminjaman',
+			tanggal_pengembalian = '$tanggal_pengembalian',
+			tanggal_pengambilan = '$tanggal_pengambilan'
+
+            WHERE id_peminjaman = $id_peminjaman
+			";
+
+    mysqli_query(
+        $conn,
+        $query
+    );
+
+    return mysqli_affected_rows($conn);
+}
+
+function peminjaman_status_edit($data)
+{
+    global $conn;
+
+    $id_peminjaman = $data["id_peminjaman"];
+    $status = $data["status"];
+
+    $query = "UPDATE peminjaman SET
+			status = '$status'
+
+            WHERE id_peminjaman = $id_peminjaman
+			";
+
+    mysqli_query(
+        $conn,
+        $query
+    );
+
+    return mysqli_affected_rows($conn);
+}
+
+function peminjaman_delete($id_peminjaman)
+{
+    global $conn;
+
+    pd_delete($id_peminjaman);
+    mysqli_query($conn, "DELETE FROM peminjaman WHERE id_peminjaman = $id_peminjaman");
+    return mysqli_affected_rows($conn);
+}
+
+function pd_delete($id_peminjaman)
+{
+    global $conn;
+
+    mysqli_query($conn, "DELETE FROM peminjaman_detail WHERE id_peminjaman = $id_peminjaman");
+}

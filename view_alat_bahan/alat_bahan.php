@@ -73,8 +73,7 @@ $alat_bahan = query(
                                             <td>
                                                 <div class="btn-group btn-group-toggle" data-toggle="buttons">
                                                     <a href="alat_bahan_edit.php?id_alat_bahan=<?= $ab["id_alat_bahan"] ?>"
-                                                        class="btn btn-info text-white"><i
-                                                            class="mdi mdi-account-edit"></i></a>
+                                                        class="btn btn-info text-white"><i class="mdi mdi-pencil"></i></a>
                                                     <a href="alat_bahan_delete.php?id_alat_bahan=<?= $ab["id_alat_bahan"] ?>"
                                                         class="btn btn-danger text-white"
                                                         onclick="return confirm('Yakin ingin menghapus <?= $ab['nama_alat_bahan']; ?>?');"><i
