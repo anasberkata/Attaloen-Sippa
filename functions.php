@@ -263,11 +263,13 @@ function peminjaman_add($data)
     $tanggal_peminjaman = $data["tanggal_peminjaman"];
     $tanggal_pengembalian = $data["tanggal_pengembalian"];
     $tanggal_pengambilan = $data["tanggal_pengambilan"];
-    $status = "2";
+    $status_peminjaman = "2";
+    $status_pengambilan = "2";
+    $status_pengembalian = "2";
 
     $query = "INSERT INTO peminjaman
 				VALUES
-			(NULL, '$id_karyawan', '$keperluan', '$tanggal_peminjaman', '$tanggal_pengembalian', '$status', '$tanggal_pengambilan')
+			(NULL, '$id_karyawan', '$keperluan', '$tanggal_peminjaman', '$tanggal_pengembalian', '$tanggal_pengambilan', '$status_peminjaman', '$status_pengambilan', '$status_pengembalian')
 			";
 
     mysqli_query($conn, $query);
@@ -304,15 +306,15 @@ function peminjaman_edit($data)
     return mysqli_affected_rows($conn);
 }
 
-function peminjaman_status_edit($data)
+function status_peminjaman_edit($data)
 {
     global $conn;
 
     $id_peminjaman = $data["id_peminjaman"];
-    $status = $data["status"];
+    $status_peminjaman = $data["status_peminjaman"];
 
     $query = "UPDATE peminjaman SET
-			status = '$status'
+			status_peminjaman = '$status_peminjaman'
 
             WHERE id_peminjaman = $id_peminjaman
 			";
@@ -325,11 +327,74 @@ function peminjaman_status_edit($data)
     return mysqli_affected_rows($conn);
 }
 
-function peminjaman_delete($id_peminjaman)
+function status_pengambilan_edit($data)
 {
     global $conn;
 
+    $id_peminjaman = $data["id_peminjaman"];
+    $status_pengambilan = $data["status_pengambilan"];
+
+    $query = "UPDATE peminjaman SET
+			status_pengambilan = '$status_pengambilan'
+
+            WHERE id_peminjaman = $id_peminjaman
+			";
+
+    mysqli_query(
+        $conn,
+        $query
+    );
+
+    return mysqli_affected_rows($conn);
+}
+
+function status_pengembalian_save($data)
+{
+    global $conn;
+
+    $id_peminjaman = $data["id_peminjaman"];
+    $status_pengembalian = $data["status_pengembalian"];
+
+    update_qty_alat_bahan($data);
+
+    // simpan status pengembalian
+    $query = "UPDATE peminjaman SET status_pengembalian = $status_pengembalian WHERE id_peminjaman = $id_peminjaman";
+    mysqli_query($conn, $query);
+
+
+
+    return mysqli_affected_rows($conn);
+}
+
+function update_qty_alat_bahan($data)
+{
+    global $conn;
+
+    $id_peminjaman = $data["id_peminjaman"];
+
+    $peminjaman_detail = query("SELECT * FROM peminjaman_detail WHERE id_peminjaman = $id_peminjaman");
+    foreach ($peminjaman_detail as $pd) {
+        $id_alat_bahan = $pd["id_barang"];
+        $qty_pengembalian = $data["qty_pengembalian" . $id_alat_bahan];
+
+        // Ambil stok terbaru dari tabel alat_bahan
+        $alat_bahan = query("SELECT * FROM alat_bahan WHERE id_alat_bahan = $id_alat_bahan")[0];
+        $qty_terbaru = $alat_bahan["qty"] + $qty_pengembalian;
+
+        // Update stok pada tabel alat_bahan
+        $query = "UPDATE alat_bahan SET qty = $qty_terbaru WHERE id_alat_bahan = $id_alat_bahan";
+
+        mysqli_query($conn, $query);
+    }
+}
+
+function peminjaman_delete($id_peminjaman, $data)
+{
+    global $conn;
+
+    update_qty_alat_bahan($data);
     pd_delete($id_peminjaman);
+
     mysqli_query($conn, "DELETE FROM peminjaman WHERE id_peminjaman = $id_peminjaman");
     return mysqli_affected_rows($conn);
 }
@@ -339,4 +404,87 @@ function pd_delete($id_peminjaman)
     global $conn;
 
     mysqli_query($conn, "DELETE FROM peminjaman_detail WHERE id_peminjaman = $id_peminjaman");
+}
+
+
+function peminjaman_detail_add($data)
+{
+    global $conn;
+
+    $id_peminjaman = $data["id_peminjaman"];
+    $id_barang = $data["id_barang"];
+    $quantity = $data["quantity"];
+
+    foreach ($id_barang as $key => $id) {
+
+        // $id_alat_bahan = $id_barang[$id];
+        $qty = $quantity[$id];
+
+        $query = "UPDATE alat_bahan SET qty = qty - $qty WHERE id_alat_bahan = $id";
+
+        mysqli_query($conn, $query);
+
+        $query = "INSERT INTO peminjaman_detail (id_peminjaman_detail, id_peminjaman, id_barang, qty_peminjaman) 
+                  VALUES (NULL, '$id_peminjaman', '$id', '$qty')";
+
+        mysqli_query($conn, $query);
+    }
+
+    return mysqli_affected_rows($conn);
+}
+
+function peminjaman_detail_edit($data)
+{
+    global $conn;
+
+    $id_peminjaman = $data["id_peminjaman"];
+    $id_peminjaman_detail = $data["id_peminjaman_detail"];
+    $id_barang = $data["id_barang"];
+    $qty_peminjaman = $data["qty_peminjaman"];
+
+    $ab = query("SELECT * FROM alat_bahan WHERE id_alat_bahan = $id_barang")[0];
+    $pd = query("SELECT * FROM peminjaman_detail WHERE id_peminjaman_detail = $id_peminjaman_detail")[0];
+
+    if ($qty_peminjaman == $pd['qty_peminjaman']) {
+        $qty_edit = $ab['qty'];
+    } else {
+        $selisih = $qty_peminjaman - $pd['qty_peminjaman'];
+        $qty_edit = $ab['qty'] - $selisih;
+    }
+
+    $query = "UPDATE alat_bahan SET
+			qty = '$qty_edit'
+
+            WHERE id_alat_bahan = $id_barang
+			";
+
+    mysqli_query($conn, $query);
+
+    $query = "UPDATE peminjaman_detail SET
+			qty_peminjaman = '$qty_peminjaman'
+
+            WHERE id_peminjaman_detail = $id_peminjaman_detail
+			";
+
+    mysqli_query($conn, $query);
+
+    return mysqli_affected_rows($conn);
+}
+
+function peminjaman_detail_delete($id_peminjaman_detail, $id_peminjaman)
+{
+    global $conn;
+
+    $pd = query("SELECT * FROM peminjaman_detail WHERE id_peminjaman_detail = $id_peminjaman_detail")[0];
+
+    $qty_peminjaman = $pd["qty_peminjaman"];
+    $id_alat_bahan = $pd["id_barang"];
+
+    $query = "UPDATE alat_bahan SET qty = qty + $qty_peminjaman WHERE id_alat_bahan = $id_alat_bahan";
+    mysqli_query($conn, $query);
+
+    $query = "DELETE FROM peminjaman_detail WHERE id_peminjaman_detail = $id_peminjaman_detail";
+    mysqli_query($conn, $query);
+
+    return mysqli_affected_rows($conn);
 }

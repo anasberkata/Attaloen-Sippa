@@ -2,9 +2,12 @@
 session_start();
 include "../templates/header.php";
 
+$id_u = $user["id_user"];
+
 $peminjaman = query(
     "SELECT * FROM peminjaman
     INNER JOIN users ON peminjaman.id_karyawan = users.id_user
+    WHERE id_user = $id_u
     ORDER BY id_peminjaman DESC"
 );
 ?>

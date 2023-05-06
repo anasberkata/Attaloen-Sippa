@@ -11,15 +11,15 @@ $p = query(
 
 $users = query("SELECT * FROM users WHERE NOT role_id = 1");
 
-if (isset($_POST["edit_peminjaman_status"])) {
-    if (peminjaman_status_edit($_POST) > 0) {
+if (isset($_POST["edit_pengambilan_status"])) {
+    if (status_pengambilan_edit($_POST) > 0) {
         echo "<script>
-            alert('Status peminjaman berhasil diubah!');
+            alert('Status pengambilan berhasil diubah!');
             document.location.href = 'peminjaman.php';
           </script>";
     } else {
         echo "<script>
-            alert('Status peminjaman gagal diubah!');
+            alert('Status pengambilan gagal diubah!');
             document.location.href = 'peminjaman.php';
           </script>";
     }
@@ -46,13 +46,11 @@ if (isset($_POST["edit_peminjaman_status"])) {
                     <div class="card-body">
                         <form class="form-horizontal" action="" method="POST" enctype="multipart/form-data">
                             <div class="card-body">
-                                <h4 class="card-title">Status Peminjaman :
-                                    <?php if ($p["status"] == 1): ?>
-                                        Diterima
-                                    <?php elseif ($p["status"] == 2): ?>
-                                        Pending
+                                <h4 class="card-title">Status Pengambilan :
+                                    <?php if ($p["status_pengembalian"] == 1): ?>
+                                        Sudah
                                     <?php else: ?>
-                                        Ditolak
+                                        Belum
                                     <?php endif; ?>
                                 </h4>
 
@@ -64,10 +62,9 @@ if (isset($_POST["edit_peminjaman_status"])) {
                                         <div class="form-group">
                                             <label class="text-end control-label col-form-label">Status</label>
                                             <select class="select2 form-select shadow-none"
-                                                style="width: 100%; height: 36px" name="status">
-                                                <option value="1">Diterima</option>
-                                                <option value="2">Pending</option>
-                                                <option value="3">Ditolak</option>
+                                                style="width: 100%; height: 36px" name="status_pengambilan">
+                                                <option value="1">Sudah</option>
+                                                <option value="2">Belum</option>
                                             </select>
                                         </div>
                                     </div>
@@ -76,7 +73,7 @@ if (isset($_POST["edit_peminjaman_status"])) {
                             </div>
                             <div class="border-top">
                                 <div class="card-body">
-                                    <button type="submit" class="btn btn-primary" name="edit_peminjaman_status">
+                                    <button type="submit" class="btn btn-primary" name="edit_pengambilan_status">
                                         Ubah
                                     </button>
                                 </div>
