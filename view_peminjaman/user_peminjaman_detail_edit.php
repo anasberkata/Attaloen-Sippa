@@ -14,12 +14,12 @@ if (isset($_POST["edit_peminjaman_detail"])) {
     if (peminjaman_detail_edit($_POST) > 0) {
         echo "<script>
             alert('Data peminjaman berhasil diubah!');
-            document.location.href = 'peminjaman_detail.php?id_peminjaman=' + $id_peminjaman;
+            document.location.href = 'user_peminjaman_detail.php?id_peminjaman=' + $id_peminjaman;
           </script>";
     } else {
         echo "<script>
             alert('Data peminjaman gagal diubah!');
-            document.location.href = 'peminjaman_detail.php?id_peminjaman=' + $id_peminjaman;
+            document.location.href = 'user_peminjaman_detail.php?id_peminjaman=' + $id_peminjaman;
           </script>";
     }
 }
@@ -36,7 +36,7 @@ if (isset($_POST["edit_peminjaman_detail"])) {
                                 <h5 class="card-title pt-2">Ubah Data Peminjaman</h5>
                             </div>
                             <div class="col">
-                                <a href="peminjaman_detail.php?id_peminjaman=<?= $id_peminjaman ?>"
+                                <a href="user_peminjaman_detail.php?id_peminjaman=<?= $id_peminjaman ?>"
                                     class="btn btn-warning text-white float-end"><i class="mdi mdi-arrow-left-bold"></i>
                                     Kembali</a>
                             </div>

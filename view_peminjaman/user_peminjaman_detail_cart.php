@@ -12,7 +12,7 @@ if (isset($_POST['edit_cart'])) {
     }
 
     echo "<script>
-            document.location.href = 'peminjaman_detail_add.php?page=peminjaman_detail_cart&id_peminjaman=' + $id_peminjaman;
+            document.location.href = 'user_peminjaman_detail_add.php?page=user_peminjaman_detail_cart&id_peminjaman=' + $id_peminjaman;
           </script>";
 }
 
@@ -23,12 +23,12 @@ if (isset($_POST["add_peminjaman_detail"])) {
 
         echo "<script>
             alert('Data peminjaman berhasil ditambah!');
-            document.location.href = 'peminjaman_detail.php?id_peminjaman=' + $id_peminjaman;
+            document.location.href = 'user_peminjaman_detail.php?id_peminjaman=' + $id_peminjaman;
           </script>";
     } else {
         echo "<script>
             alert('Data peminjaman gagal ditambah!');
-            document.location.href = 'peminjaman_detail.php?id_peminjaman=' + $id_peminjaman;
+            document.location.href = 'user_peminjaman_detail.php?id_peminjaman=' + $id_peminjaman;
           </script>";
     }
 }
@@ -90,7 +90,7 @@ if (isset($_POST["add_peminjaman_detail"])) {
         <br />
 
         <div class="btn-group btn-group-toggle w-100" data-toggle="buttons">
-            <a href="peminjaman_detail_add.php?page=products&id_peminjaman=<?= $id_peminjaman; ?>"
+            <a href="user_peminjaman_detail_add.php?page=user_peminjaman_detail_products&id_peminjaman=<?= $id_peminjaman; ?>"
                 class="btn btn-warning">Kembali ke halaman alat &
                 bahan</a>
             <button type="submit" name="edit_cart" class="btn btn-dark">Update Keranjang</button>

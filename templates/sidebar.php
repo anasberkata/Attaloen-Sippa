@@ -1,3 +1,8 @@
+<?php
+$peminjaman_pending = query("SELECT * FROM peminjaman WHERE status_peminjaman = 2");
+$total_peminjaman_pending = count($peminjaman_pending);
+?>
+
 <aside class="left-sidebar" data-sidebarbg="skin5">
     <!-- Sidebar scroll-->
     <div class="scroll-sidebar">
@@ -19,7 +24,9 @@
                     <a class="sidebar-link waves-effect waves-dark sidebar-link"
                         href="../view_peminjaman/peminjaman.php" aria-expanded="false"><i
                             class="mdi mdi-file-document"></i><span class="hide-menu">Data
-                            Peminjaman</span></a>
+                            Peminjaman <span class="badge bg-warning px-2 py-1">
+                                <?= $total_peminjaman_pending; ?>
+                            </span></span> </a>
                 </li>
                 <li class="sidebar-item">
                     <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)"

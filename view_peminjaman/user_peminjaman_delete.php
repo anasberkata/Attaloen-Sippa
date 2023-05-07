@@ -14,14 +14,14 @@ if (peminjaman_delete($id_peminjaman, $data) > 0) {
 	echo "
 		<script>
 			alert('Data peminjaman berhasil dihapus!');
-			document.location.href = 'peminjaman.php';
+			document.location.href = 'user_peminjaman.php';
 		</script>
 	";
 } else {
 	echo "
 		<script>
 			alert('Data peminjaman gagal dihapus!');
-			document.location.href = peminjaman.php';
+			document.location.href = 'user_peminjaman.php';
 		</script>
 	";
 }

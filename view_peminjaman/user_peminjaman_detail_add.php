@@ -5,15 +5,15 @@ include "../templates/header.php";
 $id_peminjaman = $_GET["id_peminjaman"];
 
 if (isset($_GET['page'])) {
-    $pages = array("peminjaman_detail_products", "peminjaman_detail_cart");
+    $pages = array("user_peminjaman_detail_products", "user_peminjaman_detail_cart");
 
     if (in_array($_GET['page'], $pages)) {
         $_page = $_GET['page'];
     } else {
-        $_page = "peminjaman_detail_products";
+        $_page = "user_peminjaman_detail_products";
     }
 } else {
-    $_page = "peminjaman_detail_products";
+    $_page = "user_peminjaman_detail_products";
 }
 
 ?>
@@ -29,7 +29,7 @@ if (isset($_GET['page'])) {
                                 <h5 class="card-title pt-2">Tambah Data Alat / Bahan</h5>
                             </div>
                             <div class="col">
-                                <a href="peminjaman_detail.php?id_peminjaman=<?= $id_peminjaman ?>"
+                                <a href="user_peminjaman_detail.php?id_peminjaman=<?= $id_peminjaman ?>"
                                     class="btn btn-warning text-white float-end"><i class="mdi mdi-arrow-left-bold"></i>
                                     Kembali</a>
                             </div>
@@ -65,7 +65,7 @@ if (isset($_GET['page'])) {
                                             <?php endforeach; ?>
                                         </ul>
                                         <hr />
-                                        <a href="peminjaman_detail_add.php?page=peminjaman_detail_cart&id_peminjaman=<?= $id_peminjaman ?>"
+                                        <a href="user_peminjaman_detail_add.php?page=user_peminjaman_detail_cart&id_peminjaman=<?= $id_peminjaman ?>"
                                             class="btn btn-dark">Check Out</a>
 
                                     <?php else: ?>

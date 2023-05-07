@@ -21,7 +21,7 @@ $peminjaman = query(
                             </div>
                             <div class="col">
                                 <a href="peminjaman_add.php" class="btn btn-warning text-white float-end"><i
-                                        class="mdi mdi-account-plus"></i> Tambah</a>
+                                        class="mdi mdi-plus"></i> Tambah</a>
                             </div>
                         </div>
 

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: May 06, 2023 at 09:11 PM
+-- Generation Time: May 07, 2023 at 03:59 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 7.4.33
 
@@ -48,7 +48,7 @@ INSERT INTO `alat_bahan` (`id_alat_bahan`, `kode`, `nama_alat_bahan`, `merk`, `i
 (3, '20190201', 'Gunting', 'Joyko SC-848', 1, 30, '64532303319ec.jpg', 'Baik', '', '2023-05-04'),
 (4, '20210102', 'Zipper', '', 2, 30, '64532b5cdc94d.jpg', 'Baik', '', '2023-05-04'),
 (6, '20190201', 'Jarum jahit', 'Regal', 1, 50, '64536b9b3756b.jpg', 'Baik', '', '2023-05-04'),
-(7, '20210102', 'Benang', 'Cotton', 2, 50, '6454aa187bb64.jpg', 'Baik', '', '2023-05-05'),
+(7, '20210102', 'Benang', 'Cotton', 2, 40, '6454aa187bb64.jpg', 'Baik', '', '2023-05-05'),
 (8, '20190201', 'Hakpen', 'Tulip Gold 2/3', 1, 50, '6454aa4239e1b.jpg', 'Baik', '', '2023-05-05');
 
 -- --------------------------------------------------------
@@ -96,7 +96,9 @@ INSERT INTO `peminjaman` (`id_peminjaman`, `id_karyawan`, `keperluan`, `tanggal_
 (9, 2, 'asd', '2023-05-07', '2023-05-29', '2023-05-08', 1, 1, 1),
 (10, 4, 'ajkjhkaj', '2023-05-07', '2023-06-01', '2023-05-08', 1, 1, 1),
 (11, 2, 'kajkajkaka', '2023-05-08', '2023-06-05', '2023-05-09', 1, 1, 1),
-(12, 4, 'SDasfa', '2023-05-24', '2023-06-07', '2023-05-18', 2, 2, 2);
+(12, 4, 'SDasfa', '2023-05-24', '2023-06-07', '2023-05-18', 2, 2, 2),
+(13, 6, 'bikin baju lebaran hahahaha', '2023-05-07', '2023-05-31', '2023-05-08', 2, 2, 2),
+(14, 6, 'asdasasd', '2023-05-08', '2023-05-29', '2023-05-09', 2, 2, 2);
 
 -- --------------------------------------------------------
 
@@ -121,7 +123,8 @@ INSERT INTO `peminjaman_detail` (`id_peminjaman_detail`, `id_peminjaman`, `id_ba
 (33, 10, 7, 20),
 (34, 10, 6, 20),
 (35, 11, 3, 10),
-(36, 11, 4, 10);
+(36, 11, 4, 10),
+(37, 13, 7, 10);
 
 -- --------------------------------------------------------
 
@@ -231,13 +234,13 @@ ALTER TABLE `kategori`
 -- AUTO_INCREMENT for table `peminjaman`
 --
 ALTER TABLE `peminjaman`
-  MODIFY `id_peminjaman` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id_peminjaman` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `peminjaman_detail`
 --
 ALTER TABLE `peminjaman_detail`
-  MODIFY `id_peminjaman_detail` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `id_peminjaman_detail` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT for table `users`

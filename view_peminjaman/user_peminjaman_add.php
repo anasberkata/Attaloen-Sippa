@@ -8,12 +8,12 @@ if (isset($_POST["add_peminjaman"])) {
     if (peminjaman_add($_POST) > 0) {
         echo "<script>
             alert('Data peminjaman berhasil ditambah!');
-            document.location.href = 'peminjaman.php';
+            document.location.href = 'user_peminjaman.php';
           </script>";
     } else {
         echo "<script>
             alert('Data peminjaman gagal ditambah!');
-            document.location.href = 'peminjaman.php';
+            document.location.href = 'user_peminjaman.php';
           </script>";
     }
 }
@@ -30,7 +30,7 @@ if (isset($_POST["add_peminjaman"])) {
                                 <h5 class="card-title pt-2">Tambah Data Peminjaman</h5>
                             </div>
                             <div class="col">
-                                <a href="peminjaman.php" class="btn btn-warning text-white float-end"><i
+                                <a href="user_peminjaman.php" class="btn btn-warning text-white float-end"><i
                                         class="mdi mdi-arrow-left-bold"></i> Kembali</a>
                             </div>
                         </div>
@@ -44,14 +44,11 @@ if (isset($_POST["add_peminjaman"])) {
                                 <div class="row">
                                     <div class="col-12 col-md-6">
                                         <div class="form-group">
-                                            <label class="text-end control-label col-form-label">Karyawan</label>
-                                            <select class="select2 form-select shadow-none"
-                                                style="width: 100%; height: 36px" name="id_karyawan">
-                                                <option>Pilih Karyawan</option>
-                                                <?php foreach ($users as $u): ?>
-                                                    <option value="<?= $u["id_user"]; ?>"><?= $u["nama"]; ?></option>
-                                                <?php endforeach; ?>
-                                            </select>
+                                            <label class="text-end control-label col-form-label">Nama</label>
+                                            <input type="hidden" class="form-control" value="<?= $user["id_user"] ?>"
+                                                name="id_karyawan" />
+                                            <input type="text" class="form-control" value="<?= $user["nama"] ?>"
+                                                name="nama_karyawan" readonly />
                                         </div>
                                         <div class="form-group">
                                             <label for="cono1"

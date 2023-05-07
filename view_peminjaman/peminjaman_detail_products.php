@@ -41,7 +41,7 @@ if (isset($_GET['action']) && $_GET['action'] == "add") {
                         Qty :
                         <?= $ab["qty"]; ?>
                     </p>
-                    <a href="peminjaman_detail_add.php?page=products&action=add&id=<?= $ab["id_alat_bahan"]; ?>&id_peminjaman=<?= $id_peminjaman ?>"
+                    <a href="peminjaman_detail_add.php?page=peminjaman_detail_products&action=add&id=<?= $ab["id_alat_bahan"]; ?>&id_peminjaman=<?= $id_peminjaman ?>"
                         class="btn btn-info">Tambah</a>
                 </div>
             </div>

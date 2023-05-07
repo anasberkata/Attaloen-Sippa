@@ -45,9 +45,9 @@ $peminjaman_detail = query(
                             </div>
                             <div class="col-12 col-md-6">
                                 <div class="btn-group btn-group-toggle float-end" data-toggle="buttons">
-                                    <a href="peminjaman.php" class="btn btn-warning text-white"><i
+                                    <a href="user_peminjaman.php" class="btn btn-warning text-white"><i
                                             class="mdi mdi-arrow-left-bold"></i> Kembali</a>
-                                    <a href="peminjaman_detail_add.php?id_peminjaman=<?= $p["id_peminjaman"] ?>"
+                                    <a href="user_peminjaman_detail_add.php?id_peminjaman=<?= $p["id_peminjaman"] ?>"
                                         class="btn btn-warning text-white"><i class="mdi mdi-plus"></i> Tambah</a>
                                 </div>
                             </div>
@@ -80,9 +80,9 @@ $peminjaman_detail = query(
                                             </td>
                                             <td>
                                                 <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                                                    <a href="peminjaman_detail_edit.php?id_peminjaman=<?= $pd["id_peminjaman"] ?>&id_peminjaman_detail=<?= $pd["id_peminjaman_detail"] ?>"
+                                                    <a href="user_peminjaman_detail_edit.php?id_peminjaman=<?= $pd["id_peminjaman"] ?>&id_peminjaman_detail=<?= $pd["id_peminjaman_detail"] ?>"
                                                         class="btn btn-info text-white"><i class="mdi mdi-pencil"></i></a>
-                                                    <a href="peminjaman_detail_delete.php?id_peminjaman=<?= $pd["id_peminjaman"] ?>&id_peminjaman_detail=<?= $pd["id_peminjaman_detail"] ?>"
+                                                    <a href="user_peminjaman_detail_delete.php?id_peminjaman=<?= $pd["id_peminjaman"] ?>&id_peminjaman_detail=<?= $pd["id_peminjaman_detail"] ?>"
                                                         class="btn btn-danger text-white"
                                                         onclick="return confirm('Yakin ingin menghapus <?= $pd['nama_alat_bahan']; ?>?');"><i
                                                             class="mdi mdi-delete"></i></a>
