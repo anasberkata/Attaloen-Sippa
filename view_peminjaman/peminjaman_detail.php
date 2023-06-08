@@ -49,6 +49,9 @@ $peminjaman_detail = query(
                                             class="mdi mdi-arrow-left-bold"></i> Kembali</a>
                                     <a href="peminjaman_detail_add.php?id_peminjaman=<?= $p["id_peminjaman"] ?>"
                                         class="btn btn-warning text-white"><i class="mdi mdi-plus"></i> Tambah</a>
+                                    <a href="peminjaman_detail_print.php?id_peminjaman=<?= $p["id_peminjaman"] ?>"
+                                        target="_blank" class="btn btn-primary text-white"><i
+                                            class="mdi mdi-printer"></i> Print</a>
                                 </div>
                             </div>
                         </div>

@@ -90,6 +90,9 @@ $peminjaman = query(
                                             </td>
                                             <td>
                                                 <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                                                    <a href="user_peminjaman_detail_print.php?id_peminjaman=<?= $p["id_peminjaman"] ?>"
+                                                        class="btn btn-primary text-white" target="_blank"><i
+                                                            class="mdi mdi-printer"></i></a>
                                                     <a href="user_peminjaman_detail.php?id_peminjaman=<?= $p["id_peminjaman"] ?>"
                                                         class="btn btn-success text-white"><i class="mdi mdi-login"></i></a>
                                                     <a href="user_peminjaman_edit.php?id_peminjaman=<?= $p["id_peminjaman"] ?>"

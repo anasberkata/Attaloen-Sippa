@@ -19,8 +19,12 @@ $alat_bahan = query(
                                 <h5 class="card-title pt-2">Data ALat & Bahan</h5>
                             </div>
                             <div class="col">
-                                <a href="alat_bahan_add.php" class="btn btn-warning text-white float-end"><i
-                                        class="mdi mdi-account-plus"></i> Tambah</a>
+                                <div class="btn-group btn-group-toggle float-end" data-toggle="buttons">
+                                    <a href="alat_bahan_add.php" class="btn btn-warning text-white"><i
+                                            class="mdi mdi-account-plus"></i> Tambah</a>
+                                    <a href="alat_bahan_print.php" class="btn btn-primary text-white" target="_blank"><i
+                                            class="mdi mdi-printer"></i> Print</a>
+                                </div>
                             </div>
                         </div>
 

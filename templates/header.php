@@ -13,7 +13,7 @@ $user = query(
     WHERE id_user = $id"
 )[0];
 
-ini_set('display_errors', 1); //Atauerror_reporting(E_ALL && ~E_NOTICE);
+ini_set('display_errors', 1); //Atau error_reporting(E_ALL && ~E_NOTICE);
 ?>
 
 <!DOCTYPE html>

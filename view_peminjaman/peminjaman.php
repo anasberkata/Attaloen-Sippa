@@ -20,8 +20,12 @@ $peminjaman = query(
                                 <h5 class="card-title pt-2">Data Peminjaman Alat & Bahan</h5>
                             </div>
                             <div class="col">
-                                <a href="peminjaman_add.php" class="btn btn-warning text-white float-end"><i
-                                        class="mdi mdi-plus"></i> Tambah</a>
+                                <div class="btn-group btn-group-toggle float-end" data-toggle="buttons">
+                                    <a href="peminjaman_add.php" class="btn btn-warning text-white"><i
+                                            class="mdi mdi-plus"></i> Tambah</a>
+                                    <a href="peminjaman_print.php" class="btn btn-primary text-white" target="_blank"><i
+                                            class="mdi mdi-printer"></i> Print</a>
+                                </div>
                             </div>
                         </div>
 
@@ -96,6 +100,9 @@ $peminjaman = query(
                                             </td>
                                             <td>
                                                 <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                                                    <a href="peminjaman_detail_print.php?id_peminjaman=<?= $p["id_peminjaman"] ?>"
+                                                        class="btn btn-primary text-white" target="_blank"><i
+                                                            class="mdi mdi-printer"></i></a>
                                                     <a href="peminjaman_detail.php?id_peminjaman=<?= $p["id_peminjaman"] ?>"
                                                         class="btn btn-success text-white"><i class="mdi mdi-login"></i></a>
                                                     <a href="peminjaman_edit.php?id_peminjaman=<?= $p["id_peminjaman"] ?>"
